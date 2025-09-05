@@ -1,0 +1,27 @@
+syntax = "proto3";
+
+option java_package = "com.example.protobuf.tutorial";
+option java_multiple_files = true;
+
+message Person {
+  string name = 1;
+  int32 id = 2;
+  string email = 3;
+  repeated string phone_number = 4;
+  Address home_address = 5;
+  Gender gender = 6;
+}
+
+message Address {
+  string street = 1;
+  string city = 2;
+  string state = 3;
+  string zip_code = 4;
+}
+
+enum Gender {
+  UNKNOWN = 0;
+  MALE = 1;
+  FEMALE = 2;
+  OTHER = 3;
+}

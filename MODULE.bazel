@@ -1,0 +1,19 @@
+module(name = "protoc-plugin-example")
+
+bazel_dep(name = "contrib_rules_jvm", version = "0.28.0")
+bazel_dep(name = "rules_jvm_external", version = "6.7")
+bazel_dep(name = "rules_java", version = "8.15.2")
+
+maven = use_extension("@rules_jvm_external//:extensions.bzl", "maven")
+maven.install(
+    name = "maven",
+    artifacts = [
+        "com.google.protobuf:protobuf-java:4.32.0",
+    ],
+    fetch_sources = True,
+    repositories = [
+        "https://repo1.maven.org/maven2",
+    ],
+)
+use_repo(maven, "maven")
+    
